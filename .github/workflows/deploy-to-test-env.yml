@@ -1,0 +1,23 @@
+name: Deploy to Test Environment
+on:
+  schedule:
+    - cron: "0 12,17 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: Connect to EC2 and run commands
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_HOST }} << 'EOF'
+            mkdir front && cd front
+            git clone https://github.com/maroine-soprano/react-docker-github-actions
+            cd react-docker-github-actions
+            docker compose -f docker-compose_dev.yml up -d
+          EOF
