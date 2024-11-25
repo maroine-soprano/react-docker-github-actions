@@ -20,7 +20,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_HOST }} << 'EOF'
             git clone https://github.com/maroine-soprano/react-docker-github-actions
             cd react-docker-github-actions
-            docker compose -f docker-compose_deployment.yml up -d
+            docker compose -f docker-compose_deployment.yml up -d --pull always
+            docker image prune -f
             cd ..
             rm -rf react-docker-github-actions
           EOF
