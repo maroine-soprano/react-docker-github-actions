@@ -23,3 +23,5 @@ jobs:
             cd react-docker-github-actions
             docker compose -f docker-compose_dev.yml up -d
           EOF
+      - name: Remove Repository
+        run: rm -rf front
