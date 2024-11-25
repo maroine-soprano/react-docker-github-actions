@@ -26,5 +26,6 @@ jobs:
         with:
           context: .
           push: true
+          file: ./dockerfile_dev
           platforms: linux/amd64,linux/arm64
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/react-app:dev
