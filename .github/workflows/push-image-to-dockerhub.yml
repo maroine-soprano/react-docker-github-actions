@@ -17,7 +17,7 @@ jobs:
         run: echo $password | docker login -u $username --password-stdin
 
       - name: Build the Docker image
-        run: docker build -f ./dockerfile_dev -t ${{ secrets.DOCKERHUB_USERNAME }}/react-app:dev
+        run: docker build -f ./dockerfile_dev -t ${{ secrets.DOCKERHUB_USERNAME }}/react-app:dev .
 
       - name: Push the Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/demo-image-test:latest
