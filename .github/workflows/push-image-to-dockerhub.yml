@@ -1,8 +1,8 @@
-name: Push Image to Docker Hub
+name: Push Image to Docker Hub:Dev
 on:
   push:
     branches:
-      - main
+      - dev
   workflow_dispatch:
 
 jobs:
