@@ -18,10 +18,8 @@ jobs:
       - name: Connect to EC2 and run commands
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_HOST }} << 'EOF'
-            mkdir front && cd front
             git clone https://github.com/maroine-soprano/react-docker-github-actions
             cd react-docker-github-actions
-            docker compose -f docker-compose_dev.yml up -d
+            docker compose -f docker-compose_deployment.yml up -d
+            rm -rf react-docker-github-actions
           EOF
-      - name: Remove Repository
-        run: rm -rf front
