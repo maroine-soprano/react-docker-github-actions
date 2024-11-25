@@ -21,5 +21,6 @@ jobs:
             git clone https://github.com/maroine-soprano/react-docker-github-actions
             cd react-docker-github-actions
             docker compose -f docker-compose_deployment.yml up -d
+            cd ..
             rm -rf react-docker-github-actions
           EOF
