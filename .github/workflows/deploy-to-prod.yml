@@ -2,6 +2,9 @@ name: Deploy to PROD
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   sync_prod:
     runs-on: ubuntu-latest
@@ -12,7 +15,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout -b prod
+          git checkout prod
           git reset --hard dev
           git push --force origin prod
         env:
