@@ -4,6 +4,6 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <h1>React + Docker + Github actions + Ec2 (done)</h1>
+    <h1>React + Docker + Github actions + Ec2 (done ✅)</h1>
   </StrictMode>
 );
